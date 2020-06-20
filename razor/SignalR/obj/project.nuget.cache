@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "wian00Uk2KktDUnXvXtqnhhnAG/d4AWLfwJSUC1LdzRfL/LHLU3AxybvZc3HsZMolybfe4L6s7RJiBlKdv0s1A==",
+  "dgSpecHash": "a5+u4q8CsTg5xx4PTV0LwqWz7xxXDZ8Z7YEFUhFNvyrl0OSK5gj4BqN+am/poTsL5RHe1YEA1KmKayQEuQgQ+g==",
   "success": true,
-  "projectFilePath": "C:\\Git\\DiceRoller\\razor\\SignalR\\SignalR.csproj",
+  "projectFilePath": "C:\\Git\\DiceRoller\\razor\\SignalR\\DiceRoller.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Brian Bishop\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.0.3\\microsoft.netcore.app.host.win-x64.3.0.3.nupkg.sha512"
   ],

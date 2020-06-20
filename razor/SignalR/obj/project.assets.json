@@ -13,9 +13,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Git\\DiceRoller\\razor\\SignalR\\SignalR.csproj",
-      "projectName": "SignalR",
-      "projectPath": "C:\\Git\\DiceRoller\\razor\\SignalR\\SignalR.csproj",
+      "projectUniqueName": "C:\\Git\\DiceRoller\\razor\\SignalR\\DiceRoller.csproj",
+      "projectName": "DiceRoller",
+      "projectPath": "C:\\Git\\DiceRoller\\razor\\SignalR\\DiceRoller.csproj",
       "packagesPath": "C:\\Users\\Brian Bishop\\.nuget\\packages\\",
       "outputPath": "C:\\Git\\DiceRoller\\razor\\SignalR\\obj\\",
       "projectStyle": "PackageReference",
