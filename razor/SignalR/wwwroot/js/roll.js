@@ -55,10 +55,7 @@ getRollButton().addEventListener("click", function (event) {
     var diceToRoll =
         getDiceToRoll();
 
-    //var diceToRollJson =
-    //    JSON.parse(diceToRoll);
-
-    connection.invoke("Roll", diceToRoll.toString()).catch(function (err) {
+    connection.invoke("Roll", diceToRoll).catch(function (err) {    
         return console.error(err.toString());
     });
     event.preventDefault();

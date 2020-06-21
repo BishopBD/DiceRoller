@@ -9,6 +9,8 @@ namespace SignalRChat.Hubs
     {
         public async Task Roll(IEnumerable<Dice> diceToRoll)
         {
+            //var diceToRoll = new List<Dice>();
+            
             var results =
                 diceToRoll
                     .Roll();
