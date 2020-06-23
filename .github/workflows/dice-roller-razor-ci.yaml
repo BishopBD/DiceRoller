@@ -35,8 +35,7 @@ jobs:
       
       # Run dotnet build and publish
       - name: dotnet build and publish
-        run: |
-          ls -a
+        run: |         
           dotnet build razor/DiceRoller --configuration Release
           dotnet publish razor/DiceRoller -c Release -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}' 
           
