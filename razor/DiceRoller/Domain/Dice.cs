@@ -9,16 +9,16 @@ namespace DiceRoller.Domain
     {
         [JsonPropertyName("MaximumResult")]
         public string MaximumResult { get; set; }
-        public string GetDiceName => $"D-{MaximumResult}";
+        public string GetDiceName => $"{MaximumResult}";
         internal string Roll()
         {
-            var random = 
+            var random =
                 new Random();
 
-            var rollResult = 
+            var rollResult =
                 random
                     .Next(
-                        1, 
+                        1,
                         int.Parse(MaximumResult));
 
             return
@@ -61,7 +61,7 @@ namespace DiceRoller.Domain
                 var rollResult =
                     new RollResult(
                         dice);
-                
+
                 rollResult
                     .GetResult();
 

@@ -4,24 +4,14 @@ function getRollButton() {
     return document.getElementById("rollDice");
 }
 
-function getDiceSelection() {
-    return document.getElementById("diceSelection");
-}
-
-function getDiceSelectionItems() {
-    return getDiceSelection().getElementsByTagName("li");
-}
-
 function getDiceToRoll() {
     var diceToRoll = [];
-
-    var selectedDice =
-        getDiceSelectionItems();
+    var selectedDice = document.getElementById("diceSelectionContainer").getElementsByTagName("div");
 
     for (var i = 0; i < selectedDice.length; i++) {
 
         var dice = {
-            MaximumResult : selectedDice[i].getAttribute("max")
+            MaximumResult: selectedDice[i].getAttribute("max")
         };
 
         diceToRoll.push(dice);
@@ -30,19 +20,17 @@ function getDiceToRoll() {
     return diceToRoll;
 }
 var connection = new signalR.HubConnectionBuilder().withUrl("/rollHub").build();
+connection.serverTimeoutInMilliseconds = 600000;
 
 ////Disable send button until connection is established
 getRollButton().disabled = true;
 
 connection.on("RollResult", function (diceResult) {
-    var encodedMsg = "";
+    clearDiceSelection();
+    //{Result: "2", DiceName: "4"}
     diceResult.forEach(function (value) {
-        encodedMsg = encodedMsg + value.DiceName + ":" + value.Result + ";";        
+        createUserDice(value.Result, value.DiceName)
     });
-
-    var li = document.createElement("li");
-    li.textContent = encodedMsg;
-    document.getElementById("messagesList").appendChild(li);
 });
 
 connection.start().then(function () {
@@ -55,7 +43,7 @@ getRollButton().addEventListener("click", function (event) {
     var diceToRoll =
         getDiceToRoll();
 
-    connection.invoke("Roll", diceToRoll).catch(function (err) {    
+    connection.invoke("Roll", diceToRoll).catch(function (err) {
         return console.error(err.toString());
     });
     event.preventDefault();

@@ -2,64 +2,25 @@
 
 <div class="row">
     <div class="col-6">
-        <ul id="diceSelection"></ul>
+        <div id="diceSelectionContainer"></div>
     </div>
 </div>
 
 <div class="container">
-    <div class="row">
-        <div class="col-6">
-            <input type="button" id="d4" value="D-4" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-6">
-            <input type="button" id="d6" value="D-6" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-6">
-            <input type="button" id="d8" value="D-8" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-6">
-            <input type="button" id="d10" value="D-10" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-6">
-            <input type="button" id="d12" value="D-12" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-6">
-            <input type="button" id="d20" value="D-20" />
-        </div>
-    </div>
-    <div class="row">&nbsp;</div>
-    <div class="row">
-        <div class="col-6">
-            <input type="button" id="clearDice" value="Clear " />
-        </div>
-    </div>
-    <div class="row">&nbsp;</div>
-    <div class="row">
-        <div class="col-6">
-            <input type="button" id="rollDice" value="Roll! " />
-        </div>
-    </div>
+    <input type="button" id="d4" value="D-4" />
+    <input type="button" id="d6" value="D-6" />
+    <input type="button" id="d8" value="D-8" />
+    <input type="button" id="d10" value="D-10" />
+    <input type="button" id="d12" value="D-12" />
+    <input type="button" id="d20" value="D-20" />
 </div>
-<div class="row">
-    <div class="col-12">
-        <hr />
-    </div>
+
+<div class="col-6">
+    <input type="button" id="clearDice" value="Clear " />
+    <input type="button" id="rollDice" value="Roll! " />
 </div>
-<div class="row">
-    <div class="col-6">
-        <ul id="messagesList"></ul>
-    </div>
-</div>
+
+
 <script src="~/js/signalr/dist/browser/signalr.js"></script>
 <script src="~/js/dice.js"></script>
 <script src="~/js/roll.js"></script>
