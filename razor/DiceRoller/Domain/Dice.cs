@@ -19,7 +19,7 @@ namespace DiceRoller.Domain
                 random
                     .Next(
                         1,
-                        int.Parse(MaximumResult));
+                        int.Parse(MaximumResult) + 1);
 
             return
                 $"{rollResult}";
