@@ -1,12 +1,21 @@
 <div class="row">
     <div class="col-6">
-        <div id="diceSelectionContainer"></div>
-    </div>
-</div>
+        <!-- *ngIf="diceTrayService.diceTray.length >= 1" -->
+        <div id="diceSelectionContainer">
+            <div *ngFor="let dice of diceTrayService.diceTray"
+                 class="user-dice-instance-container render-d{{dice.maxResult}}">
+                <div class="user-dice-instance-content">
+                    <p>{{dice.maxResult}}</p>
+                </div>
+            </div>
+        </div>
 
-<div class="container">
-    <input type="button"
-           *ngFor="let dice of availableDiceService.getDice()"
-           value="{{dice.maxResult}}"
-           (click)="addDiceToTray(dice)">
+        <div class="container">
+            <input type="button"
+                   *ngFor="let dice of availableDiceService.getDice()"
+                   #selectedDice
+                   value="{{dice.maxResult}}"
+                   (click)="addDice(dice)">
+        </div>
+    </div>
 </div>

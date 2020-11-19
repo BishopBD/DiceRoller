@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AvailableDiceService } from '../available-dice.service';
 import { Dice } from '../dice';
+import { DiceTrayService } from '../dice-tray.service';
 
 @Component({
   selector: 'app-dice-tray',
@@ -9,13 +10,21 @@ import { Dice } from '../dice';
 })
 export class DiceTrayComponent implements OnInit {
 
-  constructor(public availableDiceService: AvailableDiceService) { }
+  dice: Dice;
+
+  constructor(
+    public diceTrayService: DiceTrayService,
+    public availableDiceService: AvailableDiceService) { }
 
   ngOnInit(): void {
   }
 
-  addDiceToTray(dice: Dice) {
-
+  addDice(dice: Dice): Dice[] {
+    this.diceTrayService.diceTray.push(dice);
+    return this.diceTrayService.diceTray;
   }
 
+  clearDice(): void {
+    this.diceTrayService.diceTray = [];
+  }
 }
