@@ -1,0 +1,43 @@
+#diceSelectionContainer {
+    display: flex;
+  }
+  .user-dice-instance-container {
+    margin: 5px;
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    justify-content: space-around;
+    /* text-align: center; */
+  }
+  .user-dice-instance-content {
+    margin: auto 0;
+    color: white;
+  }
+
+.render-d4 {
+    padding-top: 10px;
+    background-image: url("/assets/diceImages/D4.png");
+    background-size: 100% 100%;
+}
+.render-d6 {
+    background-image: url("/assets/diceImages/D6.png");
+    background-size: 100% 100%;
+  }
+  .render-d8 {
+    background-image: url("/assets/diceImages/D8.png");
+    background-size: 100% 100%;
+  }
+  .render-d10 {
+    background-image: url("/assets/diceImages/D10.png");
+    background-size: 100% 100%;
+  }
+  .render-d12 {
+    background-image: url("/assets/diceImages/D12.png");
+    background-size: 100% 100%;
+  }
+  .render-d20 {
+    padding-top: 5px;
+    background-image: url("/assets/diceImages/D20.png");
+    background-size: 100% 100%;
+  }
