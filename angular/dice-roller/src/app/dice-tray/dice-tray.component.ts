@@ -27,4 +27,8 @@ export class DiceTrayComponent implements OnInit {
   clearDice(): void {
     this.diceTrayService.diceTray = [];
   }
+
+  rollDice(): void {
+    const rollResult = this.diceTrayService.rollDice();
+  }
 }

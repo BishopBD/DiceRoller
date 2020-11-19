@@ -17,5 +17,16 @@
                    value="{{dice.maxResult}}"
                    (click)="addDice(dice)">
         </div>
+
+        <div class="col-6">
+            <input type="button"
+                   id="clearDice"
+                   value="Clear "
+                   (click)="clearDice()" />
+            <input type="button"
+                   id="rollDice"
+                   value="Roll! "
+                   (click)="rollDice()" />
+        </div>
     </div>
 </div>
