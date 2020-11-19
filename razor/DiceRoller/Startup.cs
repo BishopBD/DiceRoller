@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SignalRChat.Hubs;
 using System;
+using System.Text.Json;
 
 namespace SignalR
 {
@@ -30,7 +31,7 @@ namespace SignalR
                 })
                 .AddJsonProtocol(options =>
                 {
-                    options.PayloadSerializerOptions.PropertyNamingPolicy = null;
+                    options.PayloadSerializerOptions.PropertyNamingPolicy = null; //JsonNamingPolicy.CamelCase;
                 });
         }
 
