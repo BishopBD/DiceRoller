@@ -7,7 +7,7 @@ namespace DiceRoller.Domain
 {
     public class Dice
     {
-        [JsonPropertyName("MaximumResult")]
+        [JsonPropertyName("maximumResult")]
         public string MaximumResult { get; set; }
         public string GetDiceName => $"{MaximumResult}";
         internal string Roll()
@@ -36,9 +36,9 @@ namespace DiceRoller.Domain
             this.dice = dice;
         }
 
-        [JsonPropertyName("Result")]
+        [JsonPropertyName("result")]
         public string Result { get; private set; }
-        [JsonPropertyName("DiceName")]
+        [JsonPropertyName("diceName")]
         public string DiceName { get; private set; }
 
         internal void GetResult()

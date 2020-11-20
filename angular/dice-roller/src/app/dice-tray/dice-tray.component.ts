@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AvailableDiceService } from '../available-dice.service';
 import { Dice, TrayDice } from '../dice';
 import { DiceTrayService } from '../dice-tray.service';
+import { RollServiceService } from '../roll-service.service';
 
 @Component({
   selector: 'app-dice-tray',
