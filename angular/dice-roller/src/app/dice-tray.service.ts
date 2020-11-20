@@ -1,26 +1,20 @@
 import { Injectable } from '@angular/core';
-import { Dice } from './dice';
-import { RollResult } from './roll-response';
+import { TrayDice } from './dice';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DiceTrayService {
-  public diceTray: Dice[] = [];
+  public diceTray: TrayDice[] = [];
 
   constructor() { }
 
-
-  // addDice(dice: Dice): Dice[] {
-  //   this.diceTray.push(dice);
-  //   return this.diceTray;
-  // }
-
-  // clearDice(): void {
-  //   this.diceTray = [];
-  // }
-
-  rollDice(): RollResult[] {
-    return [{ result: 1, diceName: '4' }];
+  rollDice(): void {
+    this.diceTray = this.diceTray.map(
+      (trayDice) => {
+        return {
+          dice: trayDice.dice, rollResult: { result: (Math.floor(trayDice.dice.maxResult * Math.random()) + 1) }
+        };
+      });
   }
 }

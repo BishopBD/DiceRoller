@@ -2,10 +2,12 @@
     <div class="col-6">
         <!-- *ngIf="diceTrayService.diceTray.length >= 1" -->
         <div id="diceSelectionContainer">
-            <div *ngFor="let dice of diceTrayService.diceTray"
-                 class="user-dice-instance-container render-d{{dice.maxResult}}">
+            <div *ngFor="let trayDice of diceTrayService.diceTray"
+                 class="user-dice-instance-container render-d{{trayDice.dice.maxResult}}">
                 <div class="user-dice-instance-content">
-                    <p>{{dice.maxResult}}</p>
+                    <p>
+                        {{ trayDice?.rollResult?.result || ("D-"+trayDice.dice.maxResult)}}
+                    </p>
                 </div>
             </div>
         </div>
