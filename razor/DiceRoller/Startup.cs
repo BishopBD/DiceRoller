@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -26,7 +25,27 @@ namespace SignalR
             //    .AddMvc(options =>
             //       options.EnableEndpointRouting = false
             //    ).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
-            
+
+
+
+            services.AddCors(o => o.AddPolicy("CorsPolicy", builder =>
+            {
+                //builder
+                //    .AllowAnyMethod()
+                //    .AllowAnyHeader()
+                //    .AllowCredentials()
+                //    .WithOrigins("http://localhost:4200");
+
+
+                builder
+                    .WithOrigins(
+                    "http://localhost")
+                    .AllowCredentials()
+                    .AllowAnyHeader()
+                    .SetIsOriginAllowed(_ => true)
+                    .AllowAnyMethod();
+            }));
+
             services
                 .AddSignalR(hubOptions =>
                 {
@@ -37,15 +56,6 @@ namespace SignalR
                 {
                     options.PayloadSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
                 });
-
-            services.AddCors(o => o.AddPolicy("CorsPolicy", builder =>
-            {
-                builder
-                    .AllowAnyMethod()
-                    .AllowAnyHeader()
-                    .AllowCredentials()
-                    .WithOrigins("http://localhost:4200");
-            }));
 
             services.AddControllers();
         }

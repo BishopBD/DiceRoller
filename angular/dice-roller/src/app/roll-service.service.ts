@@ -2,6 +2,7 @@ import { Injectable, EventEmitter } from '@angular/core';
 import * as signalR from '@microsoft/signalr';
 import { RollResult } from './roll-result';
 import { TrayDice } from './dice';
+import { LogLevel } from '@microsoft/signalr';
 
 @Injectable({
   providedIn: 'root'
@@ -14,11 +15,15 @@ export class RollServiceService {
     this.startConnection();
   }
 
+
+
   private buildConnection = () => {
     this.hubConnection = new signalR.HubConnectionBuilder()
       .withUrl('http://localhost:44383/rollHub', {
-        skipNegotiation: true,
-        transport: signalR.HttpTransportType.WebSockets
+        skipNegotiation: false,
+        transport: signalR.HttpTransportType.WebSockets,
+        logger: new SignlarLogger(),
+        logMessageContent: true
       })
       .build();
   }
@@ -63,5 +68,10 @@ export class RollServiceService {
       'Roll', diceToRoll)
       .catch(
         (err) => console.error(err.toString()));
+  }
+}
+class SignlarLogger {
+  log(logLevel: LogLevel, message: string): void {
+    console.log(message);
   }
 }
