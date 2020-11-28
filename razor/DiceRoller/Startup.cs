@@ -11,72 +11,43 @@ namespace SignalR
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
-
-        public IConfiguration Configuration { get; }
-
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services
-            //    .AddMvc(options =>
-            //       options.EnableEndpointRouting = false
-            //    ).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+            services.AddRazorPages();
+            services.AddSignalR();
 
-
-
-            services.AddCors(o => o.AddPolicy("CorsPolicy", builder =>
+            services.AddCors(options =>
             {
-                //builder
-                //    .AllowAnyMethod()
-                //    .AllowAnyHeader()
-                //    .AllowCredentials()
-                //    .WithOrigins("http://localhost:4200");
-
-
-                builder
-                    .WithOrigins(
-                    "http://localhost")
-                    .AllowCredentials()
-                    .AllowAnyHeader()
-                    .SetIsOriginAllowed(_ => true)
-                    .AllowAnyMethod();
-            }));
-
-            services
-                .AddSignalR(hubOptions =>
+                options.AddDefaultPolicy(builder =>
                 {
-                    hubOptions.EnableDetailedErrors = true;
-                    hubOptions.KeepAliveInterval = TimeSpan.FromMinutes(1);
-                })
-                .AddJsonProtocol(options =>
-                {
-                    options.PayloadSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+                    builder.WithOrigins("http://localhost:4200")
+                        .AllowCredentials()
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
                 });
-
-            services.AddControllers();
+            });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseHttpsRedirection();
-            app.UseCors("CorsPolicy");
-            app.UseRouting();
-            app.UseDefaultFiles();
+            else
+            {
+                app.UseExceptionHandler("/Error");
+            }
+
             app.UseStaticFiles();
-            app.UseAuthorization();
+            app.UseRouting();
+
+            app.UseCors();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapHub<RollHub>("/rollHub");
+                endpoints.MapRazorPages();
+                endpoints.MapHub<RollHub>("/rollhub");
             });
         }
     }
