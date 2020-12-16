@@ -19,7 +19,7 @@ export class RollServiceService {
 
   private buildConnection = () => {
     this.hubConnection = new signalR.HubConnectionBuilder()
-      .withUrl('http://localhost:5000/rollHub', {
+      .withUrl('http://localhost:44383/rollHub', {
         skipNegotiation: false,
         transport: signalR.HttpTransportType.WebSockets,
         logger: new SignlarLogger(),
@@ -29,6 +29,7 @@ export class RollServiceService {
   }
 
   private startConnection = () => {
+    console.log("Starting connection!!!")
     console.log(this.hubConnection);
     this.hubConnection
       .start()
