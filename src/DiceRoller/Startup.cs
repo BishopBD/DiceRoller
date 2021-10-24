@@ -22,6 +22,15 @@ namespace SignalR
         {
             services
                 .AddRazorPages();
+
+            services.AddCors(o => o.AddPolicy("CorsPolicy", builder => {
+                builder
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials()
+                    .WithOrigins("http://localhost:4200");
+            }));
+
             services
                 .AddSignalR(hubOptions =>
                 {
@@ -52,8 +61,10 @@ namespace SignalR
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            
             app.UseAuthorization();
+            
+            app.UseCors("CorsPolicy");
 
             app.UseEndpoints(endpoints =>
             {
