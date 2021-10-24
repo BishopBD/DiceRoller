@@ -9,16 +9,11 @@ namespace SignalRChat.Hubs
     {
         public async Task Roll(IEnumerable<Dice> diceToRoll)
         {
-            var results =
-                diceToRoll
-                    .Roll();
+            var results = diceToRoll.Roll();
 
-            await 
-            Clients
-                .All
-                .SendAsync(
-                    "RollResult", 
-                    results);
+            await Clients.All.SendAsync(
+                "RollResult", 
+                results);
         }
     }
 }
