@@ -22,7 +22,7 @@ namespace DiceRoller.Domain
                         int.Parse(MaximumResult) + 1);
 
             return
-                $"{rollResult}";
+            $"{rollResult}";
         }
     }
 

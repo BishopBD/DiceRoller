@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: diceroller-websocket
+  labels:
+    app: diceroller
+    rel: stable
+spec:
+  containers:
+  - name: diceroller-websocket
+    image: diceroller:latest
+    livenessProbe:
+      httpGet:
+        path: /index.html
+        port: 80
+      initialDelaySeconds: 2 
+      timeoutSeconds: 2     
+      periodSeconds: 5
+      failureThreshold: 1
+    readinessProbe:
+      httpGet:
+        path: /index.html
+        port: 80
+      initialDelaySeconds: 3
+      periodSeconds: 5
+      failureThreshold: 1
+    ports:
+    - containerPort: 80

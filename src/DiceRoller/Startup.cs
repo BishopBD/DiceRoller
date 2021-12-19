@@ -28,7 +28,8 @@ namespace SignalR
             services
                 .AddRazorPages();
 
-            services.AddCors(o => o.AddPolicy("CorsPolicy", builder => {
+            services.AddCors(o => o.AddPolicy("CorsPolicy", builder =>
+            {
                 builder
                     .AllowAnyMethod()
                     .AllowAnyHeader()
@@ -50,11 +51,13 @@ namespace SignalR
             services.AddMvcCore()
                 .AddApiExplorer();
 
-            services.AddSwaggerGen(c => 
+            services.AddSwaggerGen(c =>
                 c.SwaggerDoc(
-                    "v1", 
-                    new OpenApiInfo {
-                        Title = "Dice Roller", Version = "v1" 
+                    "v1",
+                    new OpenApiInfo
+                    {
+                        Title = "Dice Roller",
+                        Version = "v1"
                     }
                 )
             );
@@ -82,9 +85,9 @@ namespace SignalR
             app.UseStaticFiles();
 
             app.UseRouting();
-            
+
             app.UseAuthorization();
-            
+
             app.UseCors("CorsPolicy");
 
             app.UseEndpoints(endpoints =>
