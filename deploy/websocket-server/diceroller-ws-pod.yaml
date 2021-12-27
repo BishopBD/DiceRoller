@@ -8,10 +8,11 @@ metadata:
 spec:
   containers:
   - name: diceroller-websocket
-    image: diceroller:latest
+    image: localhost:5000/diceroller
+    imagePullPolicy: IfNotPresent
     livenessProbe:
       httpGet:
-        path: /index.html
+        path: /api/status
         port: 80
       initialDelaySeconds: 2 
       timeoutSeconds: 2     
@@ -19,10 +20,17 @@ spec:
       failureThreshold: 1
     readinessProbe:
       httpGet:
-        path: /index.html
+        path: /api/status
         port: 80
       initialDelaySeconds: 3
       periodSeconds: 5
       failureThreshold: 1
+    resources:
+      limits:
+        memory: 512Mi
+        cpu: "1"
+      requests:
+        memory: 256Mi
+        cpu: "0.2"
     ports:
     - containerPort: 80
