@@ -28,14 +28,18 @@ namespace SignalR
             services
                 .AddRazorPages();
 
-            services.AddCors(o => o.AddPolicy("CorsPolicy", builder =>
-            {
-                builder
-                    .AllowAnyMethod()
-                    .AllowAnyHeader()
-                    .AllowCredentials()
-                    .WithOrigins("http://localhost:4200");
-            }));
+            services
+                .AddCors(
+                    o => o.AddPolicy(
+                        "CorsPolicy",
+                        builder =>
+                        {
+                            builder
+                                .AllowAnyMethod()
+                                .AllowAnyHeader()
+                                .AllowCredentials()
+                                .WithOrigins("http://localhost:4200");
+                        }));
 
             services
                 .AddSignalR(hubOptions =>
@@ -48,7 +52,8 @@ namespace SignalR
                     options.PayloadSerializerOptions.PropertyNamingPolicy = null;
                 });
 
-            services.AddMvcCore()
+            services
+                .AddMvcCore()
                 .AddApiExplorer();
 
             services.AddSwaggerGen(c =>

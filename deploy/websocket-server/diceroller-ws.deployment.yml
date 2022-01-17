@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: diceroller-websocket
+spec:
+  selector:
+    matchLabels:
+      app: diceroller-websocket
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: diceroller-websocket
+    spec:
+      containers:
+      - name: diceroller-websocket
+        image: localhost:5000/diceroller
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            memory: "128Mi" #128 MB
+            cpu: "100m" #100 millicpu (.1 cpu or 10% of the cpu)

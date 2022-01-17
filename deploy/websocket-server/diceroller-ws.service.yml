@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx-clusterip
+  name: diceroller-ws-clusterip
 spec:
   type: ClusterIP
   selector:
-    app: my-nginx
+    app: diceroller-websocket
   ports:
   - port: 8080
     targetPort: 80
